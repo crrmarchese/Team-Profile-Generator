@@ -2,9 +2,19 @@ const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+const templateGenerator = require("./src/template");
 
 const inquirer = require("inquirer");
 const fs = require("fs");
+const path = require("path");
+const teamGenerator = require("./src/template");
+
+const requiredQuestion = async (input) => {
+    if (input === "") {
+       return 'This question is required';
+    }
+    return true;
+  };
 
 // Array for team members
 const teamMembers = [];
@@ -18,21 +28,25 @@ inquirer
         name: "manager_name",
         type: "input",
         message: "Who is the manager of this team?",
+        validate: requiredQuestion,
       },
       { // Manager ID
         name: "manager_id",
         type: "input",
         message: "What is the manager's ID number?",
+        validate: requiredQuestion,
       },
       { // Manager email
         name: "manager_email",
         type: "input",
         message: "What is the manager's email?",
+        validate: requiredQuestion,
       },
       { // Manager office number
         name: "manager_officeNumber",
         type: "input",
         message: "What is the manager's office number?",
+        validate: requiredQuestion,
       },
     ])
     .then((managerAnswers) => {
@@ -45,6 +59,9 @@ inquirer
     })
     .catch(err => console.log(err));  
  }
+
+ // Call askManager function to start questions
+ askManagerQuestions();
 
 
     // Engineer Questions
@@ -137,10 +154,15 @@ inquirer
             } else if (newMemberAnswers.new_role === "Intern") {
                 askInternQuestions();
             } else {
-                //buildHTML();
+                buildHTML();
             }
         });
     }
+
+    // Build HTML file
+function buildHTML() {
+    fs.writeFileSync(path.join(__dirname, '/dist','sample.html'),teamGenerator(teamMembers), 'utf-8');
+}
 
 
 
