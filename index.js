@@ -40,7 +40,7 @@ inquirer
    
         teamMembers.push(manager);
 
-       // addNewMember();
+        addNewMember();
 
     })
     .catch(err => console.log(err));  
@@ -50,6 +50,7 @@ inquirer
     // Engineer Questions
 
     function askEngineerQuestions() {
+
     inquirer
         .prompt([
         { // Engineer role
@@ -74,17 +75,18 @@ inquirer
         },
         ])
         .then((engineerAnswers) => {
-         const engineer = new Engineer(engineerAnswers.engineer_name, engineerAnswers.engineer_id, engineerAnswers.engineer_email, engineerAnswers.engineer_github);
+            const engineer = new Engineer(engineerAnswers.engineer_name, engineerAnswers.engineer_id, engineerAnswers.engineer_email, engineerAnswers.engineer_github);
          
             teamMembers.push(engineer);
         
-           // addNewMember();
+            addNewMember();
         });  
 
     }
 
     // Intern Questions
     function askInternQuestions() {
+
         inquirer
             .prompt([
             { // Intern role
@@ -109,14 +111,36 @@ inquirer
             },
             ])
             .then((internAnswers) => {
-             const intern = new Intern(internAnswers.intern_name, internAnswers.intern_id, internAnswers.intern_email, internAnswers.intern_school);
-             console.log(intern);
-               teamMembers.push(intern);
+                const intern = new Intern(internAnswers.intern_name, internAnswers.intern_id, internAnswers.intern_email, internAnswers.intern_school);
+             
+                teamMembers.push(intern);
             
-                //addNewMember();
+                addNewMember();
             });  
     
         }
+
+    // Menu to ask Intern or Engineer questions
+    function addNewMember() {
+        inquirer
+            .prompt([
+            { // Choose the role to add
+                name: "new_role",
+                type: "list",
+                message: "What new role do you want to add?",
+                choices: ["Engineer", "Intern", "I'm done"],
+            },
+        ])
+        .then((newMemberAnswers) => {
+            if (newMemberAnswers.new_role ==="Engineer") {
+                askEngineerQuestions();
+            } else if (newMemberAnswers.new_role === "Intern") {
+                askInternQuestions();
+            } else {
+                //buildHTML();
+            }
+        });
+    }
 
 
 
