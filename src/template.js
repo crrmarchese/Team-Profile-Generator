@@ -52,6 +52,7 @@ function teamGenerator(teamMembers) {
                 `
 }
 
+// Filter the array by role type and return the individual members
 function teamMembersGenerator(teamMembers) {
     let output = [];
     let manager = teamMembers.filter(function(member) {
@@ -71,20 +72,24 @@ function teamMembersGenerator(teamMembers) {
     });
 
     // loop here and push to output array
+    //for(let i=0;i<managers.length;i++){
+    //let managerTemplate = generateManger(managers[i]);
+    //output.push(managerTemplate)
+    //}
 }
 
-function managerGenerator(manager) {
+function managerTemplate(manager) {
 return `
                 <div class="col col-lg-4 animate__animated animate__fadeIn">
                     <div class="card mb-4">
                         <div class="card-header bg-primary">
                             <h3 class="card-title fs-3 fw-bold mt-2 mb-4 text-white">${manager.getName()}</h3>
-                            <h4 class="card-title fs-4 fw-bold text-white"><i class="fas fa-mug-hot me-2"></i>Manager</h4>
+                            <h4 class="card-title fs-4 fw-bold text-white"><i class="fas fa-mug-hot me-2"></i>${manager.getRole()}</h4>
                         </div>
                         <div class="card-body">
                           <ul class="list-group">
-                            <li class="list-group-item">ID: 1</li>
-                            <li class="list-group-item">Email: <a href="mailto:${manager.getEmail()}.com">${manager.getEmail()}</a></li>
+                            <li class="list-group-item">ID: ${manager.getId()}</li>
+                            <li class="list-group-item">Email: <a href="mailto:${manager.getEmail()}" target="_blank">${manager.getEmail()}</a></li>
                             <li class="list-group-item">Office number: ${manager.officeNumber}</li>
                           </ul>
                         </div>
@@ -93,7 +98,23 @@ return `
 `
 }
 
-function engineerGenerator(engineer) {
-    
+function engineerTemplate(engineer) {
+ return `
+                <div class="col col-lg-4 animate__animated animate__fadeIn">
+                    <div class="card mb-4">
+                        <div class="card-header bg-primary">
+                            <h3 class="card-title fs-3 fw-bold mt-2 mb-4 text-white">${engineer.getName()}</h3>
+                            <h4 class="card-title fs-4 fw-bold text-white"><i class="fas fa-glasses me-2"></i>${engineer.getRole()}</h4>
+                        </div>
+                        <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">ID: ${engineer.getId()}</li>
+                            <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}" target="_blank">${engineer.getEmail()}</a></li>
+                            <li class="list-group-item"><a href="https://github.com/${engineer.getGithub()}" target="_blank">GitHub: ${engineer.getGithub()}</a></li>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+ `
 }
 module.exports = teamGenerator
