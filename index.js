@@ -160,9 +160,14 @@ inquirer
     }
 
     // Build HTML file
-function buildHTML() {
-    fs.writeFileSync(path.join(__dirname, '/dist','sample.html'),teamGenerator(teamMembers), 'utf-8');
-}
+    function buildHTML() {
+        try {
+            fs.writeFileSync(path.join(__dirname, '/dist','sample.html'),teamGenerator(teamMembers), 'utf-8');
+        } catch(err) {
+            console.log(err);
+        }
+    
+    }
 
 
 
