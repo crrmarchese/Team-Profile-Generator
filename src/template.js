@@ -16,20 +16,9 @@ function teamGenerator(teamMembers) {
         <!-- Animate -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
         <!-- Custom Styles -->
-        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="assets/styles.css">
         <!-- jQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <style>
-            :root {
-                --md-red-600: #E53935;
-            }
-    
-            .bg-red-600 {
-                background-color: var(--md-red-600);
-            }
-    
-        </style>
-            
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>       
     
     </head>
     <body>
@@ -56,7 +45,7 @@ function teamGenerator(teamMembers) {
 function teamMembersGenerator(teamMembers) {
     let output = [];
     let manager = teamMembers.filter(function(member) {
-        if (member.getRole()=== "Manager") {
+        if (member.getRole() === "Manager") {
             return member
         }
     });
@@ -66,55 +55,97 @@ function teamMembersGenerator(teamMembers) {
         }
     });
     let intern = teamMembers.filter(function(member) {
-        if (member.getRole()=== "Intern") {
+        if (member.getRole() === "Intern") {
             return member
         }
     });
 
-    // loop here and push to output array
+    // Loop through array and push to output array
+
+    manager.forEach((person) => {
+        let managerData = managerTemplate(person);
+        output.push(managerData);
+    })
+
+    engineer.forEach((person) => {
+        let engineerData = engineerTemplate(person);
+        output.push(engineerData);
+    })
+
+    intern.forEach((person) => {
+        let internData = internTemplate(person);
+        output.push(internData);
+    })
     //for(let i=0;i<managers.length;i++){
-    //let managerTemplate = generateManger(managers[i]);
+    //let managerTemplate = generateManager(managers[i]);
     //output.push(managerTemplate)
     //}
 }
 
+
+// Template for manager answers
 function managerTemplate(manager) {
 return `
-                <div class="col col-lg-4 animate__animated animate__fadeIn">
-                    <div class="card mb-4">
-                        <div class="card-header bg-primary">
-                            <h3 class="card-title fs-3 fw-bold mt-2 mb-4 text-white">${manager.getName()}</h3>
-                            <h4 class="card-title fs-4 fw-bold text-white"><i class="fas fa-mug-hot me-2"></i>${manager.getRole()}</h4>
-                        </div>
-                        <div class="card-body">
-                          <ul class="list-group">
-                            <li class="list-group-item">ID: ${manager.getId()}</li>
-                            <li class="list-group-item">Email: <a href="mailto:${manager.getEmail()}" target="_blank">${manager.getEmail()}</a></li>
-                            <li class="list-group-item">Office number: ${manager.officeNumber}</li>
-                          </ul>
+                    <div class="col col-lg-4 animate__animated animate__fadeIn">
+                        <div class="card mb-4">
+                            <div class="card-header bg-primary">
+                                <h3 class="card-title fs-3 fw-bold mt-2 mb-4 text-white">${manager.getName()}</h3>
+                                <h4 class="card-title fs-4 fw-bold text-white"><i class="fas fa-mug-hot me-2"></i>${manager.getRole()}</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item">ID: ${manager.getId()}</li>
+                                    <li class="list-group-item">Email: <a href="mailto:${manager.getEmail()}" target="_blank">${manager.getEmail()}</a></li>
+                                    <li class="list-group-item">Office number: ${manager.officeNumber}</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
 `
 }
 
+// Template for Engineer answers
 function engineerTemplate(engineer) {
  return `
-                <div class="col col-lg-4 animate__animated animate__fadeIn">
-                    <div class="card mb-4">
-                        <div class="card-header bg-primary">
-                            <h3 class="card-title fs-3 fw-bold mt-2 mb-4 text-white">${engineer.getName()}</h3>
-                            <h4 class="card-title fs-4 fw-bold text-white"><i class="fas fa-glasses me-2"></i>${engineer.getRole()}</h4>
-                        </div>
-                        <div class="card-body">
-                        <ul class="list-group">
-                            <li class="list-group-item">ID: ${engineer.getId()}</li>
-                            <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}" target="_blank">${engineer.getEmail()}</a></li>
-                            <li class="list-group-item"><a href="https://github.com/${engineer.getGithub()}" target="_blank">GitHub: ${engineer.getGithub()}</a></li>
-                        </ul>
+                    <div class="col col-lg-4 animate__animated animate__fadeIn">
+                        <div class="card mb-4">
+                            <div class="card-header bg-primary">
+                                <h3 class="card-title fs-3 fw-bold mt-2 mb-4 text-white">${engineer.getName()}</h3>
+                                <h4 class="card-title fs-4 fw-bold text-white"><i class="fas fa-glasses me-2"></i>${engineer.getRole()}</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item">ID: ${engineer.getId()}</li>
+                                    <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}" target="_blank">${engineer.getEmail()}</a></li>
+                                    <li class="list-group-item"><a href="https://github.com/${engineer.getGithub()}" target="_blank">GitHub: ${engineer.getGithub()}</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
  `
 }
+
+// Template for Intern answers
+function internTemplate(intern) {
+ return `
+                    <div class="col col-lg-4 animate__animated animate__fadeIn">
+                        <div class="card mb-4">
+                            <div class="card-header bg-primary">
+                                <h3 class="card-title fs-3 fw-bold mt-2 mb-4 text-white">${intern.getName()}</h3>
+                                <h4 class="card-title fs-4 fw-bold text-white"><i class="fas fa-user-graduate me-2"></i>${intern.getRole()}</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item">ID: ${intern.getId()}</li>
+                                    <li class="list-group-item">Email: <a href="mailto:${intern.getEmail()}" target="_blank">${intern.getEmail()}</a></li>
+                                    <li class="list-group-item">School: ${intern.getSchool()}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+ `
+
+
+}
+
 module.exports = teamGenerator
