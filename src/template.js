@@ -1,5 +1,5 @@
 function teamGenerator(teamMembers) {
-   return `<!DOCTYPE html>
+    return `<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -19,7 +19,6 @@ function teamGenerator(teamMembers) {
         <link rel="stylesheet" href="assets/styles.css">
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>       
-    
     </head>
     <body>
         <div class="container-fluid d-flex w-100 h-100 mx-auto flex-column">
@@ -35,57 +34,35 @@ function teamGenerator(teamMembers) {
             </main>
         </div>
         <!-- MDB -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.0.0/mdb.min.js"></script>  
-</body>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.0.0/mdb.min.js"></script>  
+    </body>
 </html>
                 `
 }
 
 // Filter the array by role type and return the individual members
 function teamMembersGenerator(teamMembers) {
-    let output = [];
-    let manager = teamMembers.filter(function(member) {
+
+    const templates = teamMembers.map(function(member) {
         if (member.getRole() === "Manager") {
-            return member
+            return managerTemplate(member);
         }
-    });
-    let engineer = teamMembers.filter(function(member) {
         if (member.getRole() === "Engineer") {
-            return member
+            return engineerTemplate(member);
         }
-    });
-    let intern = teamMembers.filter(function(member) {
         if (member.getRole() === "Intern") {
-            return member
+            return internTemplate(member);
         }
     });
+    
+    return templates.join(" ");
 
-    // Loop through array and push to output array
-
-    manager.forEach((person) => {
-        let managerData = managerTemplate(person);
-        output.push(managerData);
-    })
-
-    engineer.forEach((person) => {
-        let engineerData = engineerTemplate(person);
-        output.push(engineerData);
-    })
-
-    intern.forEach((person) => {
-        let internData = internTemplate(person);
-        output.push(internData);
-    })
-    //for(let i=0;i<managers.length;i++){
-    //let managerTemplate = generateManager(managers[i]);
-    //output.push(managerTemplate)
-    //}
 }
 
 
 // Template for manager answers
 function managerTemplate(manager) {
-return `
+    return `
                     <div class="col col-lg-4 animate__animated animate__fadeIn">
                         <div class="card mb-4">
                             <div class="card-header bg-primary">
@@ -106,7 +83,7 @@ return `
 
 // Template for Engineer answers
 function engineerTemplate(engineer) {
- return `
+    return `
                     <div class="col col-lg-4 animate__animated animate__fadeIn">
                         <div class="card mb-4">
                             <div class="card-header bg-primary">
@@ -117,7 +94,7 @@ function engineerTemplate(engineer) {
                                 <ul class="list-group">
                                     <li class="list-group-item">ID: ${engineer.getId()}</li>
                                     <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}" target="_blank">${engineer.getEmail()}</a></li>
-                                    <li class="list-group-item"><a href="https://github.com/${engineer.getGithub()}" target="_blank">GitHub: ${engineer.getGithub()}</a></li>
+                                    <li class="list-group-item">GitHub:<a href="https://github.com/${engineer.getGithub()}" target="_blank"> ${engineer.getGithub()}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -127,7 +104,7 @@ function engineerTemplate(engineer) {
 
 // Template for Intern answers
 function internTemplate(intern) {
- return `
+    return `
                     <div class="col col-lg-4 animate__animated animate__fadeIn">
                         <div class="card mb-4">
                             <div class="card-header bg-primary">
