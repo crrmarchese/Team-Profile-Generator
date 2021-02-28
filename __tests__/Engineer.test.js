@@ -8,7 +8,7 @@ test("can set GitHub account", () => {
 
 });
 
-test("can get Github accout with getGithub()", () => {
+test("can get Github account with getGithub()", () => {
     const github = "githubuseraccount";
     const employee = new Engineer("Joe Smith", "1", "joesmith@gmail.com", github);
 
