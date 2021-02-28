@@ -39,11 +39,11 @@ node index.js
 * HTML
 * CSS
 * JavaScript
-* [Material Design for Bootstrap] (https://mdbootstrap.com/)
-* [Animate.css] (https://animate.style/) 
+* [Material Design for Bootstrap](https://mdbootstrap.com/)
+* [Animate.css](https://animate.style/) 
 * [Inquirer](https://www.npmjs.com/package/inquirer)
 * [Node.js](https://nodejs.org/en/)
-* [NPM] (https://www.npmjs.com/)
+* [NPM](https://www.npmjs.com/)
 * [Jest](https://www.npmjs.com/package/jest)
 
 ## Video
