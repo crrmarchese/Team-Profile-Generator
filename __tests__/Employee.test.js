@@ -2,9 +2,9 @@ const Employee = require("../lib/Employee");
 
 test("can set an employee name", () => {
     const name = "Rani";
-    const employee = new Employee(name);
+    const employee = new Employee(name, "12", "joesmith@gmail.com");
 
-    expect(employee.name).toBe(name); //scale to compare
+    expect(employee.name).toBe(name);
 
 });
 
