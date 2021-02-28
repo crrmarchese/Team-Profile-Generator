@@ -47,4 +47,4 @@ node index.js
 * [Jest](https://www.npmjs.com/package/jest)
 
 ## Video
-[Demo of Team Profile Generator]
+[Demo of Team Profile Generator](https://1drv.ms/v/s!AtT3DKFm4NiYhAApMtSRpJqHraIB)
