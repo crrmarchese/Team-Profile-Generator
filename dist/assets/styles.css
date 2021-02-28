@@ -1,0 +1,8 @@
+/* Styles */
+:root {
+    --md-red-600: #E53935;
+}
+
+.bg-red-600 {
+    background-color: var(--md-red-600);
+}
