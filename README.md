@@ -29,10 +29,16 @@ node index.js
 6. When finished, a HTML page will generate with the answers provided.
 
 ## Usage
-### Screenshot
-![Team Profile Generator](./dist/assets/team-generator.png)
+### Screenshots
 
-![Questions in CLI](./dist/assets/gitbash-cli.png)
+![Start CLI in VSC](./dist/assets/team-profile-generator-1.jpg)<br /><br />
+
+![Questions in CLI Start](./dist/assets/team-profile-generator-2.jpg) <br /><br />
+
+![All Questions in CLI](./dist/assets/gitbash-cli.png)<br /><br />
+
+![Team Profile Generator](./dist/assets/team-generator.png)<br /><br />
+
 
 
 ## Technologies
@@ -46,5 +52,3 @@ node index.js
 * [NPM](https://www.npmjs.com/)
 * [Jest](https://www.npmjs.com/package/jest)
 
-## Video
-[Demo of Team Profile Generator](https://1drv.ms/v/s!AtT3DKFm4NiYhAApMtSRpJqHraIB)
